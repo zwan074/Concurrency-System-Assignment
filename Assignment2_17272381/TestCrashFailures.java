@@ -12,35 +12,13 @@ public class TestCrashFailures {
 		int DavePlan = RETREAT;
 		int AntonPlan = ATTACK;
 		int i = 0;
-		while (i < 100 ) {
+		while (i < 10 ) {
 			testSetUp t = new testSetUp();
 			t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Crash failures");
 		
 			i++;
 		}
 		
-		/*
-		BettyPlan = ATTACK;
-		CarlaPlan = RETREAT;
-		DavePlan = RETREAT;
-		AntonPlan = RETREAT;
-		t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Crash failures");
-
-		BettyPlan = ATTACK;
-		CarlaPlan = ATTACK;
-		DavePlan = RETREAT;
-		AntonPlan = ATTACK;
-		t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Crash failures");
-		
-		BettyPlan = ATTACK;
-		CarlaPlan = ATTACK;
-		DavePlan = RETREAT;
-		AntonPlan = ATTACK;
-		t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Crash failures");
-		*/
 	}
 
 }

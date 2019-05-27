@@ -10,12 +10,13 @@ public class Friends implements Runnable {
 	int finalPlan;
 	Friends[] friends;
 	String role;
-	Message message;
+	MessageByNote message;
+	//Message message;
 	static final int ATTACK = 1; 
 	static final int RETREAT = -1;
 	static final int CRASH = 0;
 	
-	public Friends (String name,int id, Friends[] friends , String role,Message message) {
+	public Friends (String name,int id, Friends[] friends , String role,MessageByNote message) {
 		this.name = name;
 		this.id = id;
 		this.friends = friends;

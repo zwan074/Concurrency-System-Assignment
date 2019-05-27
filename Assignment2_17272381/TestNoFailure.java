@@ -14,7 +14,7 @@ public class TestNoFailure {
 		int AntonPlan = RETREAT;
 		testSetUp t = new testSetUp();
 		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Loyal");
-
+		/*
 		BettyPlan = ATTACK;
 		CarlaPlan = RETREAT;
 		DavePlan = RETREAT;
@@ -37,7 +37,7 @@ public class TestNoFailure {
 		AntonPlan = ATTACK;
 		t = new testSetUp();
 		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Loyal");
-		
+		*/
 	}
 	
 	

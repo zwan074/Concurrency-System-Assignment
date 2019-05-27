@@ -12,11 +12,11 @@ public class TestByzantineFailures {
 		int DavePlan = RETREAT;
 		int AntonPlan = RETREAT;
 		int i = 0;
-		while (i < 100 ) {
+		//while (i < 100 ) {
 			testSetUp t = new testSetUp();
 			t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Byzantine failures");
 		
 			i++;
-		}
+		//}
 	}
 }

@@ -18,8 +18,8 @@ public class testSetUp {
 	public void test (int BettyPlan,int CarlaPlan, int DavePlan, int AntonPlan , String AntonRole ) {
 		
 		Friends[] friends = new Friends[4] ;
-		Message message = new Message();
-		
+		//Message message = new Message();
+		MessageByNote message = new MessageByNote();
 		Betty = new Friends("Betty" , 0 , friends , "Loyal" , message);
 		Carla = new Friends("Carla" , 1 , friends , "Loyal" , message);
 		Dave = new Friends("Dave" , 2 , friends , "Loyal" , message);
