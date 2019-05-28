@@ -11,16 +11,16 @@ public class Friends implements Runnable {
 	Friends[] friends;
 	String role;
 	Message message;
-	static final int ATTACK = 1; 
-	static final int RETREAT = -1;
+	static final int VISIT = 1; 
+	static final int NOTVISIT = -1;
 	static final int CRASH = 0;
 	
-	public Friends (String name,int id, Friends[] friends , String role,Message message) {
+	public Friends (String name,int id, Friends[] friends , String role) {
 		this.name = name;
 		this.id = id;
 		this.friends = friends;
 		this.role = role;
-		this.message = message;
+		this.message = new Message();
 		this.finalPlan = 0;
 	}
 
@@ -150,7 +150,7 @@ public class Friends implements Runnable {
 	private void ByzantineFailureRun() {
 		
 		int initialPlan = plan[id];
-		int arbitraryPlan = plan[id] == ATTACK ? RETREAT : ATTACK;
+		int arbitraryPlan = plan[id] == VISIT ? VISIT:NOTVISIT;
 		try {
 			for (Friends friend : friends) {
 				if (!friend.equals(this) ) {
@@ -216,7 +216,13 @@ public class Friends implements Runnable {
 		}
 		majorityPlan[id]  =  plan[id];
 		this.finalPlan = majority(majorityPlan);
-		System.out.println(this.name + " decide to " + finalPlan);
+		String visit = "";
+		switch (this.finalPlan) {
+			case VISIT :  visit = "VISIT"; break;
+			case NOTVISIT : visit = "NOT VISIT";break;
+		
+		}
+		System.out.println(this.name + " decide to " + visit);
 		
 	}
 	
@@ -236,7 +242,7 @@ public class Friends implements Runnable {
 			return CRASH;
 		}
 		else {
-			return majoritPlan > 0 ? ATTACK:RETREAT;
+			return majoritPlan > 0 ? VISIT:NOTVISIT;
 		}
 		
 		
@@ -250,7 +256,7 @@ public class Friends implements Runnable {
 			majoritPlan += majorityPlan[i];
 		}
 		
-		return majoritPlan > 0 ? ATTACK:RETREAT;
+		return majoritPlan > 0 ? VISIT:NOTVISIT;
 		
 		
 		
