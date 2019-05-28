@@ -19,7 +19,6 @@ public class testSetUp {
 		
 		Friends[] friends = new Friends[4] ;
 		Message message = new Message();
-		
 		Betty = new Friends("Betty" , 0 , friends , "Loyal" , message);
 		Carla = new Friends("Carla" , 1 , friends , "Loyal" , message);
 		Dave = new Friends("Dave" , 2 , friends , "Loyal" , message);
@@ -62,14 +61,19 @@ public class testSetUp {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Consensus :"  + 
-				( this.Betty.finalPlan == this.Carla.finalPlan 
+		if ( this.Betty.finalPlan == this.Carla.finalPlan 
 				&& this.Betty.finalPlan == this.Dave.finalPlan 
 				&& this.Dave.finalPlan == this.Betty.finalPlan 
 				&& this.Dave.finalPlan == this.Carla.finalPlan
 				&& this.Carla.finalPlan == this.Betty.finalPlan 
-				&& this.Carla.finalPlan == this.Dave.finalPlan)     ); 
+				&& this.Carla.finalPlan == this.Dave.finalPlan )  {
+				System.out.println("Consensus success");
 		
+					
+				}
 		
+		else {
+			System.out.println("Consensus fail");
+		}
 	}
 }

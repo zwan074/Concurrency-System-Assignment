@@ -10,37 +10,16 @@ public class TestCrashFailures {
 		int BettyPlan = ATTACK;
 		int CarlaPlan = ATTACK;
 		int DavePlan = RETREAT;
-		int AntonPlan = ATTACK;
+		int AntonPlan = RETREAT;
 		int i = 0;
 		while (i < 100 ) {
+			System.out.println(i);
 			testSetUp t = new testSetUp();
 			t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Crash failures");
 		
 			i++;
 		}
 		
-		/*
-		BettyPlan = ATTACK;
-		CarlaPlan = RETREAT;
-		DavePlan = RETREAT;
-		AntonPlan = RETREAT;
-		t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Crash failures");
-
-		BettyPlan = ATTACK;
-		CarlaPlan = ATTACK;
-		DavePlan = RETREAT;
-		AntonPlan = ATTACK;
-		t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Crash failures");
-		
-		BettyPlan = ATTACK;
-		CarlaPlan = ATTACK;
-		DavePlan = RETREAT;
-		AntonPlan = ATTACK;
-		t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Crash failures");
-		*/
 	}
 
 }

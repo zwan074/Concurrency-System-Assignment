@@ -30,12 +30,14 @@ public class Message {
 			Vector<Object> message = message1stRound.get(i) ;
 			if (message.get(1).equals(me) && message.get(0).equals(friend)) {
 				me.plan[friend.id] = (int) message.get(2);
+				//System.out.println(me.name +" friend name: " + friend.name + " friend id: " + friend.id  + " plan " + me.plan[friend.id]);
 				//System.out.println(me.name +" receive " + friend.name + " to " + me.plan[friend.id]);
 				return;
 			}
 		}
 		me.plan[friend.id] = CRASH;
-		//System.out.println(me.name +" receive " + friend.name + " to " + me.plan[friend.id]);
+		//System.out.println(me.name +" friend name: " + friend.name + " friend id: " + friend.id  + " plan " + me.plan[friend.id]);
+		//System.out.println(me.name +" receive from " + friend.name + " to " + me.plan[friend.id]);
 	}
 	
 	public synchronized void send (Friends me, Friends friend, Friends otherfriend , int plan) {
@@ -54,14 +56,16 @@ public class Message {
 			Vector<Object> message = message2stRound.get(i) ;
 			if (message.get(1).equals(me) && message.get(0).equals(friend) && message.get(2).equals(otherfriend)) {
 				me.reportedplans[otherfriend.id][friend.id] = (int) message.get(3);
-				//System.out.println(me.name +" receive " + friend.name + " that " + otherfriend.name + " is " + me.reportedplans[otherfriend.id][friend.id]);
+				//System.out.println(me.name +" friend name: " + friend.name + " friend id: " + friend.id + " otherfriend id:  " + otherfriend.id + " otherfriend name  " + otherfriend.name + " reported plan: " + me.reportedplans[otherfriend.id][friend.id]);
+				//System.out.println(me.name +" receive from " + friend.name + " that " + otherfriend.name + " is " + me.reportedplans[otherfriend.id][friend.id]);
 				return;
 			}
 			
 		}
 		
 		me.reportedplans[otherfriend.id][friend.id] = CRASH;
-		//System.out.println(me.name +" receive " + friend.name + " that " + otherfriend.name + " is " + me.reportedplans[otherfriend.id][friend.id]);
+		//System.out.println(me.name +" friend name: " + friend.name + " friend id: " + friend.id + " otherfriend id:  " + otherfriend.id + " otherfriend name  " + otherfriend.name + " reported plan: " + me.reportedplans[otherfriend.id][friend.id]);
+		//System.out.println(me.name +" receive from " + friend.name + " that " + otherfriend.name + " is " + me.reportedplans[otherfriend.id][friend.id]);
 		
 	}
 	

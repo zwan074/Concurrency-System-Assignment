@@ -8,35 +8,16 @@ public class TestNoFailure {
 	
 	public static void main(String[] args) {
 		
-		int BettyPlan = ATTACK;
+		int BettyPlan = RETREAT;
 		int CarlaPlan = ATTACK;
 		int DavePlan = RETREAT;
 		int AntonPlan = RETREAT;
-		testSetUp t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Loyal");
-
-		BettyPlan = ATTACK;
-		CarlaPlan = RETREAT;
-		DavePlan = RETREAT;
-		AntonPlan = RETREAT;
-		t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Loyal");
-
-		
-		
-		BettyPlan = ATTACK;
-		CarlaPlan = RETREAT;
-		DavePlan = RETREAT;
-		AntonPlan = ATTACK;
-		t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Loyal");
-
-		BettyPlan = ATTACK;
-		CarlaPlan = ATTACK;
-		DavePlan = RETREAT;
-		AntonPlan = ATTACK;
-		t = new testSetUp();
-		t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Loyal");
+		int i = 0;
+		while (i < 100 ) {
+			testSetUp t = new testSetUp();
+			t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Loyal");
+			i++;
+		}
 		
 	}
 	

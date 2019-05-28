@@ -13,6 +13,7 @@ public class TestByzantineFailures {
 		int AntonPlan = RETREAT;
 		int i = 0;
 		while (i < 100 ) {
+			System.out.println(i);
 			testSetUp t = new testSetUp();
 			t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Byzantine failures");
 		

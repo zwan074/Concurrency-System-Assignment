@@ -27,7 +27,7 @@ public class Friends implements Runnable {
 	
 	@Override
 	public void run() {
-		System.out.println(this.name + " Start a new Algorithm");
+		//System.out.println(this.name + " Start a new Algorithm");
 		switch (role) {
 			case "Loyal" : NoFailureRun(); break;
 			case "Crash failures" : CrashFailureRun();break;
@@ -223,13 +223,22 @@ public class Friends implements Runnable {
 	private int majority(Friends friend) {
 		
 		int majoritPlan = 0;
-		majoritPlan += plan[friend.id];
+		int crashesNumber = 0;
+		reportedplans[friend.id][friend.id]= plan[friend.id];
 		for ( int i = 0; i < friend.plan.length ; i++  ) {
 			majoritPlan += reportedplans[friend.id][i];
+			if (reportedplans[friend.id][i] == 0) {
+				crashesNumber++;
+			}
 			//System.out.println(this.name + " " + friend.name + " " + i + " " + reportedplans[friend.id][i] );
 		}
+		if (crashesNumber == 3)  { // if reportedplans are all crash.
+			return CRASH;
+		}
+		else {
+			return majoritPlan > 0 ? ATTACK:RETREAT;
+		}
 		
-		return majoritPlan > 0 ? ATTACK:RETREAT;
 		
 	}
 	
