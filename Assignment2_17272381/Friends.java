@@ -2,15 +2,16 @@ package Assignment2_17272381;
 
 public class Friends implements Runnable {
 
-	String name;
-	int id;
-	int[] plan;
-	int[][] reportedplans;
-	int[] majorityPlan;
-	int finalPlan;
-	Friends[] friends;
-	String role;
-	Message message;
+	String name; // friend's name
+	int id; //friend's id
+	int[] plan; //friend's plan
+	int[][] reportedplans; //friend's reported plans
+	int[] majorityPlan; // frisnd's majorityplan
+	int finalPlan; // friend's final plan
+	Friends[] friends; // friends' array
+	String role; // role if loyal, byzantine failures or crash failures.
+	Message message; //message pass object
+	
 	static final int VISIT = 1; 
 	static final int NOTVISIT = -1;
 	static final int CRASH = 0;
@@ -47,7 +48,8 @@ public class Friends implements Runnable {
 					message.send(this, friend , this.plan[id]);
 				}	
 			}
-
+			
+			// wait for a while to receive messages arrived 
 			Thread.sleep(1000);
 
 			for (Friends friend : friends) {
@@ -57,7 +59,7 @@ public class Friends implements Runnable {
 				}				
 			}
 			
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 
 			
 			for (Friends friend : friends) {
@@ -70,6 +72,7 @@ public class Friends implements Runnable {
 				
 			}
 			
+			// wait for a while to receive messages arrived 
 			Thread.sleep(1000);
 			
 			for (Friends friend : friends) {
@@ -82,7 +85,7 @@ public class Friends implements Runnable {
 				
 			}
 			
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			decideFinalPlan () ;
 			
 			
@@ -96,13 +99,14 @@ public class Friends implements Runnable {
 	private void CrashFailureRun() {
 		try {
 			for (Friends friend : friends) {
+				// 50% chance to crash
 				if (!friend.equals(this) && Math.random() > 0.5) {
 					message.send(this, friend ,this.plan[id]);
 					
 				}
 					
 			}
-			
+			// wait for a while to receive messages arrived 
 			Thread.sleep(1000);
 
 			for (Friends friend : friends) {
@@ -114,10 +118,11 @@ public class Friends implements Runnable {
 					
 			}
 			
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 
 			for (Friends friend : friends) {
 				for (Friends otherfriend : friends) {
+					// 50% chance to crash
 					if (!friend.equals(this) && !friend.equals(otherfriend) && !otherfriend.equals(this) && Math.random() > 0.5) {
 						message.send(this, friend , otherfriend , this.plan[otherfriend.id]);
 					}
@@ -125,7 +130,7 @@ public class Friends implements Runnable {
 				}
 				
 			}
-
+			// wait for a while to receive messages arrived 
 			Thread.sleep(1000);
 			for (Friends friend : friends) {
 				for (Friends otherfriend : friends) {
@@ -137,7 +142,7 @@ public class Friends implements Runnable {
 				
 			}
 				
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			decideFinalPlan () ;
 			
 		}
@@ -149,17 +154,17 @@ public class Friends implements Runnable {
 	
 	private void ByzantineFailureRun() {
 		
-		int initialPlan = plan[id];
-		int arbitraryPlan = plan[id] == VISIT ? VISIT:NOTVISIT;
+		int initialPlan = this.plan[id];
+		int arbitraryPlan = this.plan[id] == VISIT ? NOTVISIT:VISIT;
 		try {
 			for (Friends friend : friends) {
 				if (!friend.equals(this) ) {
-					plan[id] = Math.random() > 0.5 ? initialPlan : arbitraryPlan;
-					message.send(this, friend ,this.plan[id]);
+					//50% chance to send arbitrary message
+					message.send(this, friend , Math.random() > 0.5 ? initialPlan : arbitraryPlan);
 				}
 					
 			}
-			
+			// wait for a while to receive messages arrived 
 			Thread.sleep(1000);
 
 			for (Friends friend : friends) {
@@ -172,18 +177,22 @@ public class Friends implements Runnable {
 			}
 			
 
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
+			
+			
 			for (Friends friend : friends) {
 				for (Friends otherfriend : friends) {
 					if (!friend.equals(this) && !friend.equals(otherfriend) && !otherfriend.equals(this)) {
-						plan[id] = Math.random() > 0.5 ? initialPlan : arbitraryPlan;
-						message.send(this, friend , otherfriend , this.plan[otherfriend.id]);
+						//50% chance to send arbitrary message
+						int otherfriendInitialPlan = this.plan[otherfriend.id];
+						int otherfriendArbitraryPlan = this.plan[otherfriend.id] == VISIT ? NOTVISIT:VISIT;
+						message.send(this, friend , otherfriend , Math.random() > 0.5 ? otherfriendInitialPlan : otherfriendArbitraryPlan );
 					}
 						
 				}
 				
 			}
-
+			// wait for a while to receive messages arrived 
 			Thread.sleep(1000);
 			for (Friends friend : friends) {
 				for (Friends otherfriend : friends) {
@@ -194,7 +203,7 @@ public class Friends implements Runnable {
 				}
 				
 			}
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			decideFinalPlan () ;
 			
 		} 
@@ -238,7 +247,8 @@ public class Friends implements Runnable {
 			}
 			//System.out.println(this.name + " " + friend.name + " " + i + " " + reportedplans[friend.id][i] );
 		}
-		if (crashesNumber == 3)  { // if reportedplans are all crash.
+		// if reportedplans are all crash.
+		if (crashesNumber == 3)  { 
 			return CRASH;
 		}
 		else {

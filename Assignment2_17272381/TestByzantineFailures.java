@@ -7,13 +7,15 @@ public class TestByzantineFailures {
 	static final int CRASH = 0;
 	
 	public static void main(String[] args) {
+		//can change friends' plan here
 		int BettyPlan = VISIT;
 		int CarlaPlan = VISIT;
 		int DavePlan = NOTVISIT;
-		int AntonPlan = NOTVISIT;
+		int AntonPlan = VISIT;
+		//test 100 days
 		int i = 0;
 		while (i < 100 ) {
-			System.out.println(i);
+			System.out.println("Day " + i);
 			testSetUp t = new testSetUp();
 			t.test ( BettyPlan, CarlaPlan,  DavePlan,  AntonPlan , "Byzantine failures");
 		
